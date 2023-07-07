@@ -7,7 +7,7 @@
   etape/.style={materia, text width=8em, minimum width=10em, minimum height=3em, rounded corners, drop shadow},
   linepart/.style={draw, thick, color=black!50, -LaTeX, dashed},
   line/.style={draw, thick, color=black!50, -LaTeX},
-  ur/.style={draw, text centered, minimum height=0.01em},
+  ur/.style={draw, minimum height=0.01em, align=left},
   back group/.style={fill=yellow!20,rounded corners, draw=black!50, dashed, inner xsep=15pt, inner ysep=10pt},
 }
 
@@ -23,10 +23,13 @@
     node distance=1 and -.25,
   ]
   {
-    \node [on chain, join] {Raw signal};
-    \node [on chain, join] {Pre-1};
-    \node [on chain, join] {Pre-2};
-    \node [on chain, join] {Feature extract};
+    \node [on chain, join] {X-ray Image};
+    \node [on chain, join] {Gray Scaling};
+    \node [on chain, join] {Histogram Equalisation};
+    \node [on chain, join] {Image Sharpenning};
+    \node [on chain, join] {Thresholding};
+    \node [on chain, join] {Edge Detection};
+    \node [on chain, join] {Feature extraction};
     \node [on chain, join] {Model fitting};
     {[start branch=r going below right]
       \node [on chain] {testing};
@@ -35,7 +38,7 @@
       \node [on chain] {training};
     }
     {[continue branch=r going below]
-      \node [on chain] {abnormal};
+      \node [on chain] {pneumonia};
     }
     {[continue branch=l going below]
       \node [on chain] {normal};
@@ -43,20 +46,22 @@
   }
 
   \begin{scope}[on background layer]
-    \node (bk1) [back group] [fit=(p-2) (p-3)] {};
-    \node (bk2) [back group] [fit=(p-4) (p-5)] {};
+    \node (bk1) [back group] [fit=(p-2) (p-6)] {};
+    \node (bk2) [back group] [fit=(p-7)] {};
     \node (bk3) [back group] [fit=(p/r-2) (p/l-2)] {};
     \node [draw, thick, green!50!black, fill=green!75!black!25, rounded corners, fit=(p-1), inner xsep=15pt, inner ysep=10pt] {};
   \end{scope}
 
-  \path [line] (p-5.south) --  (bk3.north);
+  \path [line] (p-8.south) --  (bk3.north);
   \path [line] (bk3.south) --  (p/l-3);
   \path [line] (bk3.south) --  (p/r-3);
   \path (bk1.east)+(+6.0,0) node (ur1)[ur] {};
-  \node (ur2)[ur] at (bk2.east -| ur1) {};
+  \node (ur2)[ur] at (bk2.east -| ur1) {Mean \& sd of unprocessed X-ray\\ Area of opacity\\
+  										Perimeter of visible lung-region\\ Irregularity index\\
+  										Equivalent diameter\\ Hu momemnts};
   \node (ur3)[ur] at (bk3.east -| ur1) {};
   \transreceptor{bk1}{pre processing}{ur1};
-  \transreceptor{bk2}{Feature selection}{ur2};
+  \transreceptor{bk2}{feature selection}{ur2};
   \transreceptor{bk3}{classification}{ur3};
 \end{tikzpicture}
 \end{document}

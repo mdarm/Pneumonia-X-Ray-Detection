@@ -24,6 +24,7 @@
   ]
   {
     \node [on chain, join] {X-ray Image};
+    \node [on chain, join] {Resize to $300\times300$ pixels};
     \node [on chain, join] {Normalisation};
     \node [on chain, join] {Principal Component Analysis};
     \node [on chain, join] {Model fitting};
@@ -42,12 +43,12 @@
   }
 
   \begin{scope}[on background layer]
-    \node (bk1) [back group] [fit=(p-2) (p-3)] {};
+    \node (bk1) [back group] [fit=(p-2) (p-4)] {};
     \node (bk3) [back group] [fit=(p/r-2) (p/l-2)] {};
     \node [draw, thick, green!50!black, fill=green!75!black!25, rounded corners, fit=(p-1), inner xsep=15pt, inner ysep=10pt] {};
   \end{scope}
 
-  \path [line] (p-4.south) --  (bk3.north);
+  \path [line] (p-5.south) --  (bk3.north);
   \path [line] (bk3.south) --  (p/l-3);
   \path [line] (bk3.south) --  (p/r-3);
   \path (bk1.east)+(+6.0,0) node (ur1)[ur] {};

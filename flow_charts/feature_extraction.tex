@@ -30,6 +30,7 @@
     \node [on chain, join] {Thresholding};
     \node [on chain, join] {Edge Detection};
     \node [on chain, join] {Feature extraction};
+    \node [on chain, join] {Normalisation};
     \node [on chain, join] {Model fitting};
     {[start branch=r going below right]
       \node [on chain] {testing};
@@ -52,7 +53,7 @@
     \node [draw, thick, green!50!black, fill=green!75!black!25, rounded corners, fit=(p-1), inner xsep=15pt, inner ysep=10pt] {};
   \end{scope}
 
-  \path [line] (p-8.south) --  (bk3.north);
+  \path [line] (p-9.south) --  (bk3.north);
   \path [line] (bk3.south) --  (p/l-3);
   \path [line] (bk3.south) --  (p/r-3);
   \path (bk1.east)+(+6.0,0) node (ur1)[ur] {};

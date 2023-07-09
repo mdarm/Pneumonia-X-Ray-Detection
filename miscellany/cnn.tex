@@ -1,0 +1,65 @@
+\documentclass[tikz,border=3.14mm]{standalone}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d}
+\definecolor{dgreen}{RGB}{63,127,0}
+\definecolor{dred}{RGB}{144,14,3}
+\definecolor{dblue}{RGB}{0,0,144}
+\definecolor{dyellow}{RGB}{144,144,0}
+\definecolor{dpurple}{RGB}{72,61,139}
+\begin{document}
+\tdplotsetmaincoords{60}{50}
+\begin{tikzpicture}[tdplot_main_coords,line join=miter,font=\sffamily]
+\path[tdplot_screen_coords] (-2,0); 
+\pgfmathsetmacro{\xstretch}{4}
+\edef\Cols{red,dgreen,dblue,dyellow,dpurple}
+\edef\LstCols{{"red","dgreen","dblue","dyellow","dpurple"}}
+\foreach \Col [count=\X starting from 0,remember=\X as \LastX] in \Cols
+ {
+  \foreach \XX in {1,2,3,4}
+  {
+    \draw[thick,\Col] (\xstretch*\X+0.4*\XX-0.4,0,0) -- (\xstretch*\X+0.4*\XX,0,0);
+    \begin{scope}[canvas is yz plane at x=\xstretch*\X+0.4*\XX]
+     \pgfmathtruncatemacro{\fullness}{120-20*\XX}
+     \draw[fill=\Col!\fullness] (-1,-1) rectangle (1,1);
+    \end{scope}
+  }
+  \draw[thick,\Col] (\xstretch*\X+0.4*4,0,0) coordinate(front-\X) 
+   -- (\xstretch*\X+1+0.4*4,0,0) coordinate(back-\X);
+  \begin{scope}[canvas is xy plane at z=0]
+   \ifnum\X>0
+    \foreach \Z in {0,...,\LastX}
+    {
+      \pgfmathsetmacro{\mycol}{\LstCols[\Z]}
+      \draw[thick,\mycol,overlay] (front-\Z) to[out=-90,in=-90,looseness=1.5] (back-\X);
+    }
+   \fi
+  \end{scope}
+  \begin{scope}[canvas is yz plane at x=\xstretch*\X+1+0.4*4,transform shape]
+   \ifnum\X=0
+    \node[draw,fill=white] (BN-\X) at (0,0) {Conv2d (3,16,3), Padding: 1, ReLU, MaxPool2d (2,2)};
+   \else
+    \ifnum\X=1
+      \node[draw,fill=white] (BN-\X) at (0,0) {Conv2d (16,32,3), Padding: 1, ReLU, MaxPool2d (2,2)};
+    \else
+      \ifnum\X=2
+        \node[draw,fill=white] (BN-\X) at (0,0) {Conv2d (32,64,3), Padding: 1, ReLU, MaxPool2d (2,2)};
+      \else
+        \ifnum\X=3
+          \node[draw,fill=white] (BN-\X) at (0,0) {Flatten, Dropout (0.25), Linear (64*256//8*256//8,512), ReLU, Dropout (0.25)};
+        \else
+          \node[draw,fill=white] (BN-\X) at (0,0) {Linear (512,2)};
+        \fi
+      \fi
+    \fi
+   \fi
+  \end{scope}
+  \pgfmathtruncatemacro{\NextX}{\X+1}
+  \ifnum\X<4
+   \pgfmathsetmacro{\NextCol}{\LstCols[\NextX]}
+  \else 
+   \pgfmathsetmacro{\NextCol}{"black"} 
+  \fi 
+  \draw[thick,\NextCol] (\xstretch*\X+1+0.4*4,0,0) -- ({\xstretch*(\X+1)+0.4*4},0,0);
+  }
+\end{tikzpicture}
+\end{document}

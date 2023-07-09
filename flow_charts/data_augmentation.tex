@@ -33,10 +33,14 @@
     \node [on chain, join] {Normalisation};
     \node [on chain, join] {CNN fitting};
     {[start branch=r going below right]
-      \node [on chain] {testing};
+      \node [on chain, xshift=1cm] {testing};
     }
     {[start branch=l going below left]
-      \node [on chain] {training};
+      \node [on chain, xshift=-1cm] {training};
+    }
+    {
+    [start branch=b going below]
+      \node [on chain] {validation};
     }
     {[continue branch=r going below]
       \node [on chain] {pneumonia};
@@ -49,16 +53,16 @@
   \begin{scope}[on background layer]
     \node (bk1) [back group] [fit=(p-2) (p-6)] {};
     \node (bk2) [back group] [fit=(p-7) (p-8)] {};
-    \node (bk3) [back group] [fit=(p/r-2) (p/l-2)] {};
+    \node (bk3) [back group] [fit=(p/r-2) (p/b-2) (p/l-2)] {};
     \node [draw, thick, green!50!black, fill=green!75!black!25, rounded corners, fit=(p-1), inner xsep=15pt, inner ysep=10pt] {};
   \end{scope}
 
   \path [line] (p-9.south) --  (bk3.north);
   \path [line] (bk3.south) --  (p/l-3);
   \path [line] (bk3.south) --  (p/r-3);
-  \path (bk1.east)+(+6.0,0) node (ur1)[ur] {};
-  \node (ur2)[ur] at (bk2.east -| ur1) {};
-  \node (ur3)[ur] at (bk3.east -| ur1) {};
+  \path (bk1.east)+(+6.0,0) node (ur1)[ur, xshift=3cm] {only applied to training set};
+  \node (ur2)[ur] at (bk2.east -| ur1) {applied to the whole dataset};
+  \node (ur3)[ur] at (bk3.east -| ur1) {performed five times\\ for statistical significance};
   \transreceptor{bk1}{data augmentation}{ur1};
   \transreceptor{bk2}{pre processing}{ur2};
   \transreceptor{bk3}{classification}{ur3};

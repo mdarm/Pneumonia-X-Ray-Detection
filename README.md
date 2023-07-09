@@ -38,7 +38,8 @@ Number/Size of Images   : Total      : 5856 (1.15 Gigabyte (GB))
                           Validation : 16   ( 2.8 Megabyte (MB))
                           Testing    : 624  (75.4 Megabyte (MB))
 
-<b>Logistic Regression Parameters</b>
+  
+<b>Best Classical Machine Learning Model Parameters</b>
 Machine Learning Library: Keras 
 Best Model              : Logistic Regression
 Loss Function           : categorical_crossentropy

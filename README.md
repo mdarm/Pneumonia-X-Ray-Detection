@@ -3,20 +3,20 @@
 <pre>
 Domain             : Computer Vision, Machine Learning
 Sub-Domain         : Deep Learning, Image Recognition
-Techniques         : Deep Convolutional Neural Network, ImageNet, Inception
+Techniques         : Deep Convolutional Neural Network, Feature Extraction, Classical ML Aglorithms 
 Application        : Image Recognition, Image Classification, Medical Imaging
 </pre>
 
 ### Description
 <pre>
-1. Detected Pneumonia from Chest X-Ray images using Custom Deep Convololutional Neural Network and by retraining pretrained model “InceptionV3” with 5856 images of X-ray (1.15GB).
-2. For retraining removed output layers, freezed first few layers and fine-tuned model for two new label classes (Pneumonia and Normal).
-3. With Custom Deep Convololutional Neural Network attained testing accuracy 89.53% and loss 0.41.
+1. Detected Pneumonia from Chest X-Ray images using a Custom Convolutional Neural Network model and Classical ML Aglorithms.
+2. The best of the classical ML Algoriths, Logistic Regression, attained testing accuracy of 89.21%.
+2. Convololutional Neural Network attained testing accuracy 88.41% (+-1.1%) and a loss of 0.41.
 </pre>
 
 #### Code
 <pre>
-GitHub Link      : <a href=https://github.com/mdarm/Pneumonia-X-Ray-Detection>Detection of Pneumonia from Chest X-Ray Images(GitHub)</a>
+GitHub Link      : <a href=https://github.com/mdarm/Pneumonia-X-Ray-Detection>Detection of Pneumonia from Chest X-Ray Images</a>
 </pre>
 
 #### Dataset
@@ -35,25 +35,57 @@ Dataset Name            : Chest X-Ray Images (Pneumonia)
 Number of Class         : 2
 Number/Size of Images   : Total      : 5856 (1.15 Gigabyte (GB))
                           Training   : 5216 (1.07 Gigabyte (GB))
-                          Validation : 320  (42.8 Megabyte (MB))
-                          Testing    : 320  (35.4 Megabyte (MB))
+                          Validation : 16   ( 2.8 Megabyte (MB))
+                          Testing    : 624  (75.4 Megabyte (MB))
 
-<b>Model Parameters</b>
+<b>Logistic Regression Parameters</b>
+Machine Learning Library: Keras 
+Best Model              : Logistic Regression
+Loss Function           : categorical_crossentropy
 
+Training Parameters
+Max iterations          : 100 
+Penalty                 : Manhattan (l1)
+C Hyperparameter        : 0.01
+Solver                  : Saga
+Training Time           : 1 minutes 
+
+Output (Prediction/ Recognition / Classification Metrics)
+Testing
+Accuracy (F-1) Score    : 89.21% 
+Precision               : 83.78%
+Recall (Pneumonia)      : 95.38% 
+
+
+<b>CNN Parameters</b>
+Machine Learning Library: PyTorch 
+Base Model              : Custom Convolutional Neural Network
+Optimizers              : Adam
+Loss Function           : categorical_crossentropy
+
+Training Parameters
+Batch Size              : 256 
+Number of Epochs        : 10 
+Training Time           : 110 minutes 
+
+Output (Prediction/ Recognition / Classification Metrics)
+Testing
+Accuracy (F-1) Score    : 88.4% (+-1.1%)
+Loss                    : 0.41
+Precision               : 88.37% (+-0.8%)
+Recall (Pneumonia)      : 95.48% (+-1.8%)
 </pre>
 
-##### Sample Output: 
-
-
-##### Confusion Matrix: 
-
-
 #### Tools / Libraries
-
+<pre>
+Languages               : Python
+Tools/IDE               : Kaggle API 
+Libraries               : Keras, PyTorch
+</pre>
 
 #### Dates
 <pre>
 Duration                : June 2023 - July 2023
-Current Version         : v1.0.0.3
-Last Update             : 05.07.2023
+Current Version         : v1.0
+Last Update             : 09.07.2023
 </pre>

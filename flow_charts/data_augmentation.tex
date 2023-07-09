@@ -1,0 +1,66 @@
+\documentclass[tikz,multi,border=10pt]{standalone}
+\usetikzlibrary{shadows,arrows.meta,positioning,backgrounds,fit,chains,scopes}
+
+% Define block styles
+\tikzset{%
+  materia/.style={draw, fill=blue!20, text width=6.0em, text centered, minimum height=1.5em,drop shadow},
+  etape/.style={materia, text width=8em, minimum width=10em, minimum height=3em, rounded corners, drop shadow},
+  linepart/.style={draw, thick, color=black!50, -LaTeX, dashed},
+  line/.style={draw, thick, color=black!50, -LaTeX},
+  ur/.style={draw, minimum height=0.01em, align=left},
+  back group/.style={fill=yellow!20,rounded corners, draw=black!50, dashed, inner xsep=15pt, inner ysep=10pt},
+}
+
+\newcommand{\transreceptor}[3]{%
+  \path [linepart] (#1.east) -- node [above] {\scriptsize #2} (#3);}
+
+\begin{document}
+\begin{tikzpicture}
+  [
+    start chain=p going below,
+    every on chain/.append style={etape},
+    every join/.append style={line},
+    node distance=1 and -.25,
+  ]
+  {
+    \node [on chain, join] {X-ray Image};
+    \node [on chain, join] {Rotate $\pm 20^{o}$};
+    \node [on chain, join] {Horizontal Flip};
+    \node [on chain, join] {Change Brightness, Contrast, Hue};
+    \node [on chain, join] {Affine Transformations and Translations};
+    \node [on chain, join] {Perspective Transformations};
+    \node [on chain, join] {Resize data to $256\times256$};
+    \node [on chain, join] {Normalisation};
+    \node [on chain, join] {CNN fitting};
+    {[start branch=r going below right]
+      \node [on chain] {testing};
+    }
+    {[start branch=l going below left]
+      \node [on chain] {training};
+    }
+    {[continue branch=r going below]
+      \node [on chain] {pneumonia};
+    }
+    {[continue branch=l going below]
+      \node [on chain] {normal};
+    }
+  }
+
+  \begin{scope}[on background layer]
+    \node (bk1) [back group] [fit=(p-2) (p-6)] {};
+    \node (bk2) [back group] [fit=(p-7) (p-8)] {};
+    \node (bk3) [back group] [fit=(p/r-2) (p/l-2)] {};
+    \node [draw, thick, green!50!black, fill=green!75!black!25, rounded corners, fit=(p-1), inner xsep=15pt, inner ysep=10pt] {};
+  \end{scope}
+
+  \path [line] (p-9.south) --  (bk3.north);
+  \path [line] (bk3.south) --  (p/l-3);
+  \path [line] (bk3.south) --  (p/r-3);
+  \path (bk1.east)+(+6.0,0) node (ur1)[ur] {};
+  \node (ur2)[ur] at (bk2.east -| ur1) {};
+  \node (ur3)[ur] at (bk3.east -| ur1) {};
+  \transreceptor{bk1}{data augmentation}{ur1};
+  \transreceptor{bk2}{pre processing}{ur2};
+  \transreceptor{bk3}{classification}{ur3};
+\end{tikzpicture}
+\end{document}

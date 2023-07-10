@@ -9,9 +9,9 @@ Application        : Image Recognition, Image Classification, Medical Imaging
 
 ### Description
 <pre>
-1. Detected Pneumonia from Chest X-Ray images using a Custom Convolutional Neural Network model and Classical ML Aglorithms.
-2. The best of the classical ML Algoriths, Logistic Regression, attained testing accuracy of 89.21%.
-2. Convololutional Neural Network attained testing accuracy 88.41% (+-1.1%) and a loss of 0.41.
+1. Created an Intelligent System, for detecting Pneumonia from Chest X-Ray images, using a Custom Convolutional Neural Network and Classical ML Aglorithms.
+2. The best of the classical ML Algoriths, Logistic Regression, attained a testing accuracy of 89.21%.
+2. The Convololutional Neural Network attained a testing accuracy 88.41% (+-1.10%) and a loss of 0.41 (+-0.13%).
 </pre>
 
 #### Code
@@ -51,14 +51,14 @@ C Hyperparameter        : 0.01
 Solver                  : Saga
 Training Time           : 1 minutes 
 
-Output (Prediction/ Recognition / Classification Metrics)
+Output (Prediction/Recognition/Classification Metrics)
 Testing
 Accuracy (F-1) Score    : 89.21% 
 Precision               : 83.78%
 Recall (Pneumonia)      : 95.38% 
 
 
-<b>CNN Parameters</b>
+<b>Convolutional Neural Network Parameters</b>
 Machine Learning Library: PyTorch 
 Base Model              : Custom Convolutional Neural Network
 Optimizers              : Adam
@@ -69,12 +69,12 @@ Batch Size              : 256
 Number of Epochs        : 10 
 Training Time           : 110 minutes 
 
-Output (Prediction/ Recognition / Classification Metrics)
+Output (Prediction/Recognition/Classification Metrics)
 Testing
-Accuracy (F-1) Score    : 88.4% (+-1.1%)
-Loss                    : 0.41
-Precision               : 88.37% (+-0.8%)
-Recall (Pneumonia)      : 95.48% (+-1.8%)
+Accuracy (F-1) Score    : 88.40% (+-1.10%)
+Loss                    :  0.41  (+-0.13)
+Precision               : 88.37% (+-0.80%)
+Recall (Pneumonia)      : 95.48% (+-1.80%)
 </pre>
 
 #### Tools / Libraries

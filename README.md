@@ -11,12 +11,7 @@ Application        : Image Recognition, Image Classification, Medical Imaging
 <pre>
 1. Created an Intelligent System, for detecting Pneumonia from Chest X-Ray images, using a Custom Convolutional Neural Network and Classical ML Aglorithms.
 2. The best of the classical ML Algoriths, Logistic Regression, attained a testing accuracy of 89.21%.
-2. The Convololutional Neural Network attained a testing accuracy 88.41% (+-1.10%) and a loss of 0.41 (+-0.13%).
-</pre>
-
-#### Code
-<pre>
-GitHub Link      : <a href=https://github.com/mdarm/Pneumonia-X-Ray-Detection>Detection of Pneumonia from Chest X-Ray Images</a>
+2. The Convololutional Neural Network attained a testing accuracy 88.41% (+-1.10%) and a loss of 0.41 (+-0.13%). Uncertainties are within a confidence interval of one standard deviation.
 </pre>
 
 #### Dataset
@@ -88,5 +83,5 @@ Libraries               : Keras, PyTorch
 <pre>
 Duration                : June 2023 - July 2023
 Current Version         : v1.0
-Last Update             : 09.07.2023
+Last Update             : 20.07.2023
 </pre>

@@ -14,26 +14,24 @@ Application        : Image Recognition, Image Classification, Medical Imaging
 2. The Convololutional Neural Network attained a testing accuracy 88.41% (+-1.10%) and a loss of 0.41 (+-0.13%). Uncertainties are within a confidence interval of one standard deviation.
 </pre>
 
-#### Dataset
+### Dataset
 <pre>
-Dataset Name     : Chest X-Ray Images (Pneumonia)
-Dataset Link     : <a href=https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia>Chest X-Ray Images (Pneumonia) Dataset (Kaggle)</a>
-                 : <a href=https://data.mendeley.com/datasets/rscbjbr9sj/2>Chest X-Ray Images (Pneumonia) Dataset (Original Dataset)</a>
-Original Paper   : <a href=https://www.cell.com/cell/fulltext/S0092-8674(18)30154-5>Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning</a>
-                   (Daniel S. Kermany, Michael Goldbaum, Wenjia Cai, M. Anthony Lewis, Huimin Xia, Kang Zhang)
-                   https://www.cell.com/cell/fulltext/S0092-8674(18)30154-5
+Dataset Name            : Chest X-Ray Images (Pneumonia)
+Number of Classes       : 2
+Number/Size of Images   : Total      : 5856 ( 1.15 Gigabyte (GB))
+                          Training   : 5216 ( 1.07 Gigabyte (GB))
+                          Validation : 16   ( 2.80 Megabyte (MB))
+                          Testing    : 624  (75.40 Megabyte (MB))
+
+Dataset Links           : <a href=https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia>Chest X-Ray Images Dataset (Kaggle)</a>
+                        : <a href=https://data.mendeley.com/datasets/rscbjbr9sj/2>Chest X-Ray Images Dataset (Original Dataset)</a>
+Original Paper          : <a href=https://www.cell.com/cell/fulltext/S0092-8674(18)30154-5>Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning</a>
+                          (Daniel S. Kermany, Michael Goldbaum, Wenjia Cai, M. Anthony Lewis, Huimin Xia, Kang Zhang)
+                          https://www.cell.com/cell/fulltext/S0092-8674(18)30154-5
 </pre>
 
+### Results
 <pre>
-<b>Dataset Details</b>
-Dataset Name            : Chest X-Ray Images (Pneumonia)
-Number of Class         : 2
-Number/Size of Images   : Total      : 5856 (1.15 Gigabyte (GB))
-                          Training   : 5216 (1.07 Gigabyte (GB))
-                          Validation : 16   ( 2.8 Megabyte (MB))
-                          Testing    : 624  (75.4 Megabyte (MB))
-
-  
 <b>Best Classical Machine Learning Model Parameters</b>
 Machine Learning Library: Keras 
 Best Model              : Logistic Regression
@@ -72,14 +70,14 @@ Precision               : 88.37% (+-0.80%)
 Recall (Pneumonia)      : 95.48% (+-1.80%)
 </pre>
 
-#### Tools / Libraries
+### Tools / Libraries
 <pre>
 Languages               : Python
 Tools/IDE               : Kaggle API 
 Libraries               : Keras, PyTorch
 </pre>
 
-#### Dates
+### Dates
 <pre>
 Duration                : June 2023 - July 2023
 Current Version         : v1.0

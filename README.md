@@ -74,7 +74,7 @@ Recall (Pneumonia)      : 95.48% (+-1.80%)
 <pre>
 Languages               : Python
 Tools/IDE               : Kaggle API 
-Libraries               : Keras, PyTorch
+Libraries               : scikit-learn, PyTorch
 </pre>
 
 ### Dates
